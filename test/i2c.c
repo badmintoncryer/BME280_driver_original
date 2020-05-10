@@ -45,11 +45,11 @@ int8_t i2c_read(int8_t *fd, uint8_t reg, uint8_t *dat, uint8_t cnt)
     return 0;
 }
 
-void delay_msec(uint16_t msec)
+void delay_sec(uint8_t sec, uint16_t msec)
 {
     struct timespec ts;
 
-    ts.tv_sec = 0;
+    ts.tv_sec = sec;
     ts.tv_nsec = msec * 1000 * 1000;
 
     nanosleep(&ts, NULL);

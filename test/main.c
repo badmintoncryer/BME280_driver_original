@@ -20,7 +20,7 @@ int8_t main()
         printf( "%f,", measure_data.pressure /100.0 );
         printf( "%f\n", measure_data.humidity / 1024.0 );
 
-        delay_msec(1000);
+        delay_sec(1, 0);
     }
 
     return 0;
