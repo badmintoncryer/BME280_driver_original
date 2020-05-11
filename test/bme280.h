@@ -22,6 +22,9 @@ typedef struct bme280_config {
 } bme280_config_t;
 
 typedef struct bme280_measure_date {
+    int32_t raw_tempreture;
+    int32_t raw_pressure;
+    int32_t raw_humidity;
     int32_t tempreture;
     uint32_t pressure;
     uint32_t humidity;

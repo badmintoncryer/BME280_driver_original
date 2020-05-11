@@ -17,7 +17,7 @@ int8_t main()
     while(1) {
         bme280_measure(&measure_data);
         printf( "%f,", measure_data.tempreture / 100.0 );
-        printf( "%f,", measure_data.pressure /100.0 );
+        printf( "%f,", measure_data.pressure /256.0 );
         printf( "%f\n", measure_data.humidity / 1024.0 );
 
         delay_sec(1, 0);
