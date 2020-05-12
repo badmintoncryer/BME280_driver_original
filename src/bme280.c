@@ -165,12 +165,12 @@ static int8_t bme280_get_adjust_param(param_table_t *param_table)
 
     status = bme280_read_reg(0x88, read_data, 24);
     if (status == BME280_SUCCESS) {
-        status = bme280_read_reg(0xA1, read_data[24], 1);
+        status = bme280_read_reg(0xA1, &read_data[24], 1);
     } else {
         return status;
     }
     if (status == BME280_SUCCESS) {
-        status = bme280_read_reg(0xE1, read_data[25], 7);
+        status = bme280_read_reg(0xE1, &read_data[25], 7);
     } else {
         return status;
     }
