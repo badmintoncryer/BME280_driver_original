@@ -183,6 +183,10 @@ static int8_t bme280_get_adjust_param(param_table_t *param_table)
         param_table->dig_h4 = (int16_t)((int16_t)read_data[28] << 4 | (read_data[29] & 0x0F));
         param_table->dig_h5 = (int16_t)((int16_t)read_data[30] << 4 | (read_data[29] & 0xF0));
         param_table->dig_h6 = (int8_t)read_data[31];
+
+        for (int8_t i = 0; i < 32; i++) {
+            printf("%d\n", read_data[i]);
+        }
     } else {
         return status;
     }
