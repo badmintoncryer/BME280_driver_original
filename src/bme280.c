@@ -236,14 +236,21 @@ static uint32_t bme280_compensate_hum(int32_t hum)
 {
     int32_t v_x1_u32r;
 
+    printf("%d\n", v_x1_u32r);
+
     v_x1_u32r = (t_fine - ((int32_t)76800));
+    printf("%d\n", v_x1_u32r);
     v_x1_u32r = (
         ((((hum << 14) - (((int32_t)param.dig_h4) << 20) - (((int32_t)param.dig_h5) * v_x1_u32r)) + ((int32_t)16384)) >> 15)
         * (((((((v_x1_u32r * ((int32_t)param.dig_h6)) >> 10) * (((v_x1_u32r * ((int32_t)param.dig_h3)) >> 11) + ((int32_t)32768))) >> 10)
         + ((int32_t)2097152)) * ((int32_t)param.dig_h2) + 8192) >> 14));
+    printf("%d\n", v_x1_u32r);
     v_x1_u32r = (v_x1_u32r - (((((v_x1_u32r >> 15) * (v_x1_u32r >> 15)) >> 7) * ((int32_t)param.dig_h1)) >> 4));
+    printf("%d\n", v_x1_u32r);
     v_x1_u32r = (v_x1_u32r < 0 ? 0 : v_x1_u32r);
+    printf("%d\n", v_x1_u32r);
     v_x1_u32r = (v_x1_u32r > 419430400 ? 419430400 : v_x1_u32r);
+    printf("%d\n", v_x1_u32r);
 
     return (uint32_t)(v_x1_u32r >> 12);
 }
