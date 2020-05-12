@@ -161,7 +161,7 @@ int8_t bme280_read_reg(uint8_t reg_addr, uint8_t *data, uint8_t size)
 static int8_t bme280_get_adjust_param(param_table_t *param_table)
 {
     int8_t status;
-    uint8_t read_data[24];
+    uint8_t read_data[32];
 
     status = bme280_read_reg(0x88, read_data, 24);
     if (status == BME280_SUCCESS) {
@@ -195,9 +195,6 @@ static int8_t bme280_get_adjust_param(param_table_t *param_table)
         param_table->dig_h5 = (int16_t)((int16_t)read_data[30] << 4 | (read_data[29] & 0xF0));
         param_table->dig_h6 = (int8_t)read_data[31];
 
-        for (int8_t i = 0; i < 32; i++) {
-            printf("%d\n", read_data[i]);
-        }
     } else {
         return status;
     }
