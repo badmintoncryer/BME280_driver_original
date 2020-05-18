@@ -8,7 +8,7 @@
 
 typedef struct param_table {
     uint16_t dig_t1;
-    int16_t dig_t2;
+    int16_t dig_t2; 
     int16_t dig_t3;
     uint16_t dig_p1;
     int16_t dig_p2;
