@@ -14,8 +14,18 @@ int8_t main()
 
     status = bme280_init(&config);
 
+    if (status == BME280_ERROR) {
+        printf("Initialization is failed.\n");
+        return 0;
+    }
+
     while(1) {
-        bme280_measure(&measure_data);
+        status = bme280_measure(&measure_data);
+        if (status == BME280_ERROR) {
+            printf("Measurement is failed.\n");
+            return 0;
+        }
+
         printf( "%f,", measure_data.tempreture / 100.0 );
         printf( "%f,", measure_data.pressure /256.0 );
         printf( "%f\n", measure_data.humidity / 1024.0 );
