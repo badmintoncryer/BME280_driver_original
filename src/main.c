@@ -19,19 +19,15 @@ int8_t main()
         return 0;
     }
 
-    while(1) {
-        status = bme280_measure(&measure_data);
-        if (status == BME280_ERROR) {
-            printf("Measurement is failed.\n");
-            return 0;
-        }
-
-        printf( "%f,", measure_data.tempreture / 100.0 );
-        printf( "%f,", measure_data.pressure /256.0 );
-        printf( "%f\n", measure_data.humidity / 1024.0 );
-
-        delay_sec(1, 0);
+    status = bme280_measure(&measure_data);
+    if (status == BME280_ERROR) {
+        printf("Measurement is failed.\n");
+        return 0;
     }
+
+    printf( "%f,", measure_data.tempreture / 100.0 );
+    printf( "%f,", measure_data.pressure / 256.0 );
+    printf( "%f\n", measure_data.humidity / 1024.0 );
 
     return 0;
 }
